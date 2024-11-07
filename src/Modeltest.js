@@ -98,53 +98,47 @@ const Model = () => {
       if (intersects.length > 0) {
         const firstIntersect = intersects[0].object;
 
-        if (firstIntersect.name === "Cube012_1") {
-          videos["Cadre1"].texture.image.play();
-          // cursor css pointer
+        if (firstIntersect.name === "Cube012_1" || firstIntersect.name === "Cube022_1" || firstIntersect.name === "Cube016_1" || firstIntersect.name === "Cube023_1" || firstIntersect.name === "Cube024_1") {
           document.body.style.cursor = 'pointer';
         } else {
-          videos["Cadre1"].texture.image.pause();
-          document.body.style.cursor = 'default';
+          document.body.style.cursor = 'auto';
+        }
 
+        if (firstIntersect.name === "Cube012_1") {
+          videos["Cadre1"].texture.image.play();
+        } else {
+          videos["Cadre1"].texture.image.pause();
         }
 
         if (firstIntersect.name === "Cube022_1") {
           videos["Cadre2"].texture.image.play();
-          document.body.style.cursor = 'pointer';
 
         } else {
           videos["Cadre2"].texture.image.pause();
-          document.body.style.cursor = 'default';
 
         }
 
         if (firstIntersect.name === "Cube016_1") {
           videos["Cadre3"].texture.image.play();
-          document.body.style.cursor = 'pointer';
 
         } else {
           videos["Cadre3"].texture.image.pause();
-          document.body.style.cursor = 'default';
 
         }
 
         if (firstIntersect.name === "Cube023_1") {
           videos["Cadre4"].texture.image.play();
-          document.body.style.cursor = 'pointer';
 
         } else {
           videos["Cadre4"].texture.image.pause();
-          document.body.style.cursor = 'default';
 
         }
 
         if (firstIntersect.name === "Cube024_1") {
           videos["Cadre5"].texture.image.play();
-          document.body.style.cursor = 'pointer';
 
         } else {
           videos["Cadre5"].texture.image.pause();
-          document.body.style.cursor = 'default';
         }
 
 
