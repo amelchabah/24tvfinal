@@ -1,6 +1,5 @@
-// App.js
 import React from 'react';
-import Model from './Modeltest.js'; // Assurez-vous que le chemin est correct
+import Model from './Model.js'; 
 import './globals.scss';
 
 const App = () => {
