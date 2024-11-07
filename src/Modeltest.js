@@ -1,11 +1,11 @@
-import React, { Suspense, useEffect, useMemo, useRef } from 'react';
+import React, { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 import { useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const Model = () => {
+const Model = ({ setTargetColor }) => {
   // const gltf = useLoader(GLTFLoader, '/untitled1.glb', (loader) => {
   const modelUrl = 'https://raw.githubusercontent.com/amelchabah/glbfile/3e7a1b4dc4fb3f1f72d649cbade7ad3206d2f21a/untitled1.glb';  // Correct raw URL
   const gltf = useLoader(GLTFLoader, modelUrl, (loader) => {
@@ -59,7 +59,7 @@ const Model = () => {
 
       const tvScreen = scene.getObjectByName("SCREEN001");
 
-      if(tvScreen) {
+      if (tvScreen) {
         // add picture cat.jpg as texture
         const texture = new THREE.TextureLoader().load('/cat.jpg');
         tvScreen.material = new THREE.MeshBasicMaterial({ map: texture });
@@ -175,6 +175,9 @@ const Model = () => {
           tvVideoTexture.repeat.x = -1;
 
           tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
+
+          // ambientlight color yellow
+          setTargetColor(new THREE.Color(0xffff00));
         }
 
         if (firstIntersect.name === "Cube022_1") {
@@ -196,6 +199,9 @@ const Model = () => {
           tvVideoTexture.repeat.x = -1;
 
           tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
+
+          // ambientlight color red
+          setTargetColor(new THREE.Color(0xff0000));
         }
 
         if (firstIntersect.name === "Cube016_1") {
@@ -217,6 +223,9 @@ const Model = () => {
           tvVideoTexture.repeat.x = -1;
 
           tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
+
+          // ambientlight color green
+          setTargetColor(new THREE.Color(0x00ff00));
         }
 
         if (firstIntersect.name === "Cube023_1") {
@@ -238,6 +247,9 @@ const Model = () => {
           tvVideoTexture.repeat.x = -1;
 
           tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
+
+          // ambientlight color blue
+          setTargetColor(new THREE.Color(0x0000ff));
         }
 
         if (firstIntersect.name === "Cube024_1") {
@@ -259,6 +271,9 @@ const Model = () => {
           tvVideoTexture.repeat.x = -1;
 
           tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
+
+          // ambientlight color purple
+          setTargetColor(new THREE.Color(0xff00ff));
         }
 
 
@@ -275,7 +290,7 @@ const Model = () => {
       canvas.removeEventListener('pointermove', handlePointerEnter);
       canvas.removeEventListener('click', handlePlayTVVideo);
     };
-  }, [gltf, scene, raycaster, camera, gl.domElement]);
+  }, [gltf, scene, raycaster, camera, gl.domElement, setTargetColor]);
 
   return <primitive object={scene} position={[11, -2, 0]} />;
 };
@@ -303,28 +318,45 @@ const CameraController = () => {
   return null;
 };
 
-const Scene = () => (
-  <>
-    <div className='clickable-bar'>
-      <div className='progress-bar'>
-        <div className='progress' />
+const Scene = () => {
+  const [ambientLightColor, setAmbientLightColor] = useState(new THREE.Color(0xFFFFFF)); // Initial color white
+  const [targetColor, setTargetColor] = useState(new THREE.Color('white')); // Nouvelle couleur cible
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Interpolation de la couleur actuelle vers la couleur cible
+      ambientLightColor.lerp(targetColor, 0.05); // 0.05 est la vitesse de la transition
+      setAmbientLightColor(ambientLightColor.clone()); // Mettre à jour l'état pour forcer le rendu
+
+    }, 16); // Approx. 60 FPS (16 ms)
+
+    return () => clearInterval(interval);
+  }, [ambientLightColor, targetColor]);
+
+  return (
+    <>
+      <div className='clickable-bar'>
+        <div className='progress-bar'>
+          <div className='progress' />
+        </div>
       </div>
-    </div>
 
-    <div className='frameoverlay'>
-      <div className='overlaytop'></div>
-      <div className='overlaybottom'></div>
-    </div>
+      <div className='frameoverlay'>
+        <div className='overlaytop'></div>
+        <div className='overlaybottom'></div>
+      </div>
 
-    <Canvas camera={{ position: [16, -1, 0], fov: 40 }}>
-      <ambientLight intensity={0.9} />
-      <directionalLight position={[50, 30, 50]} intensity={1} />
-      <Suspense fallback={null}>
-        <Model />
-      </Suspense>
-      <CameraController />
-    </Canvas>
-  </>
-);
+      <Canvas camera={{ position: [16, -1, 0], fov: 40 }}>
+        <ambientLight intensity={0.9} color={ambientLightColor} />
+        <directionalLight position={[50, 30, 50]} intensity={1} />
+        <Suspense fallback={null}>
+          <Model setTargetColor={setTargetColor} />
+        </Suspense>
+        <CameraController />
+      </Canvas>
+    </>
+  );
+
+};
 
 export default Scene;
