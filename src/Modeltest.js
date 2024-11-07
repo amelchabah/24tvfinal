@@ -313,7 +313,7 @@ const Scene = () => {
         <div className='overlaybottom'></div>
       </div>
 
-      <Canvas camera={{ position: [16, -1, 0], fov: 38 }}>
+      <Canvas camera={{ position: [16, -1, 0], fov: 30 }}>
         <ambientLight intensity={0.9} color={ambientLightColor} />
         <directionalLight position={[50, 30, 50]} intensity={1} />
         <Suspense fallback={null}>
