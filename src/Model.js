@@ -307,7 +307,9 @@ const Scene = () => {
       </div>
 
       <div className='frameoverlay'>
-        <div className='overlaytop'></div>
+        <div className='overlaytop'>
+          <h1>2024tv</h1>
+        </div>
         <div className='overlaybottom'></div>
       </div>
 
