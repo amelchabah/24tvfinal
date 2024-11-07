@@ -34,10 +34,8 @@ const Model = ({ setTargetColor }) => {
       if (progressPercentage >= 0 && progressPercentage <= 10) {
         progress.style.width = '0%';
         // change tv screen to cadre1 video
-        const tvScreen = scene.getObjectByName("SCREEN001");
-        const tvVideo = document.createElement('video');
 
-        tvVideo.src = '/posterpolitique.mp4';
+        tvVideo.src = '/PolitiqueTV.mp4';
         tvVideo.loop = true;
         tvVideo.muted = true;
         tvVideo.autoplay = true;
@@ -55,10 +53,7 @@ const Model = ({ setTargetColor }) => {
       } else if (progressPercentage > 10 && progressPercentage <= 30) {
         progress.style.width = '20%';
 
-        const tvScreen = scene.getObjectByName("SCREEN001");
-        const tvVideo = document.createElement('video');
-
-        tvVideo.src = '/Sport.mp4';
+        tvVideo.src = '/SportTV.mp4';
         tvVideo.loop = true;
         tvVideo.muted = true;
         tvVideo.autoplay = true;
@@ -77,10 +72,7 @@ const Model = ({ setTargetColor }) => {
       } else if (progressPercentage > 30 && progressPercentage <= 50) {
         progress.style.width = '40%';
 
-        const tvScreen = scene.getObjectByName("SCREEN001");
-        const tvVideo = document.createElement('video');
-
-        tvVideo.src = '/example.mp4';
+        tvVideo.src = '/MusiqueTV.mp4';
         tvVideo.loop = true;
         tvVideo.muted = true;
         tvVideo.autoplay = true;
@@ -99,10 +91,7 @@ const Model = ({ setTargetColor }) => {
       } else if (progressPercentage > 50 && progressPercentage <= 70) {
         progress.style.width = '60%';
 
-        const tvScreen = scene.getObjectByName("SCREEN001");
-        const tvVideo = document.createElement('video');
-
-        tvVideo.src = '/example2.mp4';
+        tvVideo.src = '/EcologieTV.mp4';
         tvVideo.loop = true;
         tvVideo.muted = true;
         tvVideo.autoplay = true;
@@ -120,10 +109,7 @@ const Model = ({ setTargetColor }) => {
       } else if (progressPercentage > 70 && progressPercentage <= 90) {
         progress.style.width = '80%';
 
-        const tvScreen = scene.getObjectByName("SCREEN001");
-        const tvVideo = document.createElement('video');
-
-        tvVideo.src = '/example3.mp4';
+        tvVideo.src = '/GeopolitiqueTV.mp4';
         tvVideo.loop = true;
         tvVideo.muted = true;
         tvVideo.autoplay = true;
