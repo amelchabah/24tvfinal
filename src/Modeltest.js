@@ -37,7 +37,7 @@ const Model = ({ setTargetColor }) => {
 
         tvVideo.src = '/PolitiqueTV.mp4';
         tvVideo.loop = true;
-        tvVideo.muted = true;
+        tvVideo.muted = false;
         tvVideo.autoplay = true;
         tvVideo.play().catch(console.error);
         tvVideo.crossOrigin = 'anonymous';
@@ -55,7 +55,7 @@ const Model = ({ setTargetColor }) => {
 
         tvVideo.src = '/SportTV.mp4';
         tvVideo.loop = true;
-        tvVideo.muted = true;
+        tvVideo.muted = false;
         tvVideo.autoplay = true;
         tvVideo.play().catch(console.error);
         tvVideo.crossOrigin = 'anonymous';
@@ -74,7 +74,7 @@ const Model = ({ setTargetColor }) => {
 
         tvVideo.src = '/MusiqueTV.mp4';
         tvVideo.loop = true;
-        tvVideo.muted = true;
+        tvVideo.muted = false;
         tvVideo.autoplay = true;
         tvVideo.play().catch(console.error);
         tvVideo.crossOrigin = 'anonymous';
@@ -93,7 +93,7 @@ const Model = ({ setTargetColor }) => {
 
         tvVideo.src = '/EcologieTV.mp4';
         tvVideo.loop = true;
-        tvVideo.muted = true;
+        tvVideo.muted = false;
         tvVideo.autoplay = true;
         tvVideo.play().catch(console.error);
         tvVideo.crossOrigin = 'anonymous';
@@ -111,7 +111,7 @@ const Model = ({ setTargetColor }) => {
 
         tvVideo.src = '/GeopolitiqueTV.mp4';
         tvVideo.loop = true;
-        tvVideo.muted = true;
+        tvVideo.muted = false;
         tvVideo.autoplay = true;
         tvVideo.play().catch(console.error);
         tvVideo.crossOrigin = 'anonymous';
