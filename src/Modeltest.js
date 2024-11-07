@@ -131,11 +131,9 @@ const Model = ({ setTargetColor }) => {
     }
     );
 
-
-
     // Initialize videos and textures
     const videos = {
-      "Cadre1": { src: '/PosterPolitique.mp4' },
+      "Cadre1": { src: '/PosterPolitiqueZ.mp4' },
       "Cadre2": { src: '/PosterMusique.mp4' },
       "Cadre3": { src: '/PosterMusique.mp4' },
       "Cadre4": { src: '/PosterGeopolitique.mp4' },
