@@ -53,7 +53,7 @@ const Model = ({ setTargetColor }) => {
       } else if (progressPercentage > 10 && progressPercentage <= 30) {
         progress.style.width = '20%';
 
-        tvVideo.src = '/SportTV.mp4';
+        tvVideo.src = '/EcologieTV.mp4';
         tvVideo.loop = true;
         tvVideo.muted = false;
         tvVideo.autoplay = true;
@@ -91,7 +91,7 @@ const Model = ({ setTargetColor }) => {
       } else if (progressPercentage > 50 && progressPercentage <= 70) {
         progress.style.width = '60%';
 
-        tvVideo.src = '/EcologieTV.mp4';
+        tvVideo.src = '/GeopolitiqueTV.mp4';
         tvVideo.loop = true;
         tvVideo.muted = false;
         tvVideo.autoplay = true;
@@ -109,7 +109,7 @@ const Model = ({ setTargetColor }) => {
       } else if (progressPercentage > 70 && progressPercentage <= 90) {
         progress.style.width = '80%';
 
-        tvVideo.src = '/GeopolitiqueTV.mp4';
+        tvVideo.src = '/SportTV.mp4';
         tvVideo.loop = true;
         tvVideo.muted = false;
         tvVideo.autoplay = true;
@@ -135,11 +135,11 @@ const Model = ({ setTargetColor }) => {
 
     // Initialize videos and textures
     const videos = {
-      "Cadre1": { src: '/PolitiqueTV.mp4' },
-      "Cadre2": { src: '/SportTV.mp4' },
-      "Cadre3": { src: '/MusiqueTV.mp4' },
-      "Cadre4": { src: '/EcologieTV.mp4' },
-      "Cadre5": { src: '/GeopolitiqueTV.mp4' }
+      "Cadre1": { src: '/PosterPolitique.mp4' },
+      "Cadre2": { src: '/PosterMusique.mp4' },
+      "Cadre3": { src: '/PosterMusique.mp4' },
+      "Cadre4": { src: '/PosterGeopolitique.mp4' },
+      "Cadre5": { src: '/PosterSport.mp4' }
     };
 
     Object.keys(videos).forEach((key) => {
@@ -220,7 +220,7 @@ const Model = ({ setTargetColor }) => {
         const firstIntersect = intersects[0].object;
 
         let cadres = ["Cube012_1", "Cube022_1", "Cube016_1", "Cube023_1", "Cube024_1"];
-        let tvVideos = ["/PolitiqueTV.mp4", "/SportTV.mp4", "/MusiqueTV.mp4", "/EcologieTV.mp4", "/GeopolitiqueTV.mp4"];
+        let tvVideos = ["/PolitiqueTV.mp4", "/MusiqueTV.mp4", "/MusiqueTV.mp4", "/GeopolitiqueTV.mp4", "/SportTV.mp4"];
         let colors = [0xffff00, 0xff0000, 0x00ff00, 0x0000ff, 0xff00ff];
 
         for (let i = 0; i < cadres.length; i++) {
