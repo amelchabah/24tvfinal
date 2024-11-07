@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -9,11 +15,12 @@ body {
 
 h1 {
   opacity: 0.9;
-  margin-left: 25px;
+  margin-top: 10px;
   color: #e2e2e2;
-  font-size: 1.75rem;
+  font-size: 1.7rem;
   font-weight: 600;
 }
+
 
 canvas {
   // height: 70vh !important;
@@ -32,7 +39,34 @@ canvas {
   flex-direction: column;
   pointer-events: none;
 
+
+  .info {
+    opacity: 0.6;
+    fill: white;
+    height: 3rem;
+    width: auto;
+    cursor: pointer;
+    pointer-events: all;
+    position: relative;
+
+  }
+
+  .info-box {
+    opacity: 0;
+    position: absolute;
+    top: 4rem;
+    border-radius: 4px;
+    right: 25px;
+    background-color: #131313c8;
+    padding: 5px 9px;
+
+    p {
+      margin: 0;
+    }
+  }
+
   .overlaytop {
+    position: relative;
     width: 100%;
     height: 10vh;
     background: linear-gradient(180deg,
@@ -41,7 +75,7 @@ canvas {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // padding: 0 20px;
+    padding: 0 20px 0 25px;
     z-index: 1;
   }
 

@@ -298,6 +298,23 @@ const Scene = () => {
     return () => clearInterval(interval);
   }, [ambientLightColor, targetColor]);
 
+  // onhover of image, opacity info box to 1
+
+  useEffect(() => {
+    const info = document.querySelector('.info');
+    const infoBox = document.querySelector('.info-box');
+
+    info.addEventListener('mouseover', () => {
+      infoBox.style.opacity = '1';
+    }
+    );
+
+    info.addEventListener('mouseout', () => {
+      infoBox.style.opacity = '0';
+    }
+    );
+  }, []);
+
   return (
     <>
       <div className='clickable-bar'>
@@ -309,6 +326,11 @@ const Scene = () => {
       <div className='frameoverlay'>
         <div className='overlaytop'>
           <h1>2024tv</h1>
+          {/* <img className='info' src='/info-32.png' alt='info' /> */}
+          <svg className='info' height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><path className="ytp-svg-fill" d="M18,8 C12.47,8 8,12.47 8,18 C8,23.52 12.47,28 18,28 C23.52,28 28,23.52 28,18 C28,12.47 23.52,8 18,8 L18,8 Z M17,16 L19,16 L19,24 L17,24 L17,16 Z M17,12 L19,12 L19,14 L17,14 L17,12 Z" id="ytp-id-14"></path></svg>
+          <div className='info-box'>
+            <p>by Namak, Alix & Amel</p>
+          </div>
         </div>
         <div className='overlaybottom'></div>
       </div>
