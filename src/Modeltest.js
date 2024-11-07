@@ -6,8 +6,7 @@ import { useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
 
 const Model = ({ setTargetColor }) => {
-  // const gltf = useLoader(GLTFLoader, '/untitled1.glb', (loader) => {
-  const modelUrl = 'https://raw.githubusercontent.com/amelchabah/glbfile/3e7a1b4dc4fb3f1f72d649cbade7ad3206d2f21a/untitled1.glb';  // Correct raw URL
+  const modelUrl = 'https://raw.githubusercontent.com/amelchabah/glbfile/3e7a1b4dc4fb3f1f72d649cbade7ad3206d2f21a/untitled1.glb';
   const gltf = useLoader(GLTFLoader, modelUrl, (loader) => {
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath('/draco/');
@@ -18,17 +17,143 @@ const Model = ({ setTargetColor }) => {
   const raycaster = useMemo(() => new THREE.Raycaster(), []);
   const mouse = useRef(new THREE.Vector2());
 
-  // Extract camera and gl (renderer) from useThree at the top level of the component
   const { camera, gl } = useThree();
 
+
   useEffect(() => {
+    const progress = document.querySelector('.progress');
+    const clickableBar = document.querySelector('.clickable-bar');
+
+
+
+    clickableBar.addEventListener('click', (event) => {
+      const clickPosition = event.clientX;
+      const clickableBarWidth = clickableBar.offsetWidth;
+      const progressPercentage = (clickPosition / clickableBarWidth) * 100;
+
+      if (progressPercentage >= 0 && progressPercentage <= 10) {
+        progress.style.width = '0%';
+        // change tv screen to cadre1 video
+        const tvScreen = scene.getObjectByName("SCREEN001");
+        const tvVideo = document.createElement('video');
+
+        tvVideo.src = '/posterpolitique.mp4';
+        tvVideo.loop = true;
+        tvVideo.muted = true;
+        tvVideo.autoplay = true;
+        tvVideo.play().catch(console.error);
+        tvVideo.crossOrigin = 'anonymous';
+
+        const tvVideoTexture = new THREE.VideoTexture(tvVideo);
+        tvVideoTexture.minFilter = THREE.LinearFilter;
+        tvVideoTexture.magFilter = THREE.LinearFilter;
+        tvVideoTexture.flipY = false;
+        tvVideoTexture.wrapS = THREE.MirroredRepeatWrapping;
+        tvVideoTexture.repeat.x = -1;
+
+        tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
+      } else if (progressPercentage > 10 && progressPercentage <= 30) {
+        progress.style.width = '20%';
+
+        const tvScreen = scene.getObjectByName("SCREEN001");
+        const tvVideo = document.createElement('video');
+
+        tvVideo.src = '/Sport.mp4';
+        tvVideo.loop = true;
+        tvVideo.muted = true;
+        tvVideo.autoplay = true;
+        tvVideo.play().catch(console.error);
+        tvVideo.crossOrigin = 'anonymous';
+
+        const tvVideoTexture = new THREE.VideoTexture(tvVideo);
+        tvVideoTexture.minFilter = THREE.LinearFilter;
+        tvVideoTexture.magFilter = THREE.LinearFilter;
+        tvVideoTexture.flipY = false;
+        tvVideoTexture.wrapS = THREE.MirroredRepeatWrapping;
+        tvVideoTexture.repeat.x = -1;
+
+        tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
+
+      } else if (progressPercentage > 30 && progressPercentage <= 50) {
+        progress.style.width = '40%';
+
+        const tvScreen = scene.getObjectByName("SCREEN001");
+        const tvVideo = document.createElement('video');
+
+        tvVideo.src = '/example.mp4';
+        tvVideo.loop = true;
+        tvVideo.muted = true;
+        tvVideo.autoplay = true;
+        tvVideo.play().catch(console.error);
+        tvVideo.crossOrigin = 'anonymous';
+
+        const tvVideoTexture = new THREE.VideoTexture(tvVideo);
+        tvVideoTexture.minFilter = THREE.LinearFilter;
+        tvVideoTexture.magFilter = THREE.LinearFilter;
+        tvVideoTexture.flipY = false;
+        tvVideoTexture.wrapS = THREE.MirroredRepeatWrapping;
+        tvVideoTexture.repeat.x = -1;
+
+        tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
+
+      } else if (progressPercentage > 50 && progressPercentage <= 70) {
+        progress.style.width = '60%';
+
+        const tvScreen = scene.getObjectByName("SCREEN001");
+        const tvVideo = document.createElement('video');
+
+        tvVideo.src = '/example2.mp4';
+        tvVideo.loop = true;
+        tvVideo.muted = true;
+        tvVideo.autoplay = true;
+        tvVideo.play().catch(console.error);
+        tvVideo.crossOrigin = 'anonymous';
+
+        const tvVideoTexture = new THREE.VideoTexture(tvVideo);
+        tvVideoTexture.minFilter = THREE.LinearFilter;
+        tvVideoTexture.magFilter = THREE.LinearFilter;
+        tvVideoTexture.flipY = false;
+        tvVideoTexture.wrapS = THREE.MirroredRepeatWrapping;
+        tvVideoTexture.repeat.x = -1;
+
+        tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
+      } else if (progressPercentage > 70 && progressPercentage <= 90) {
+        progress.style.width = '80%';
+
+        const tvScreen = scene.getObjectByName("SCREEN001");
+        const tvVideo = document.createElement('video');
+
+        tvVideo.src = '/example3.mp4';
+        tvVideo.loop = true;
+        tvVideo.muted = true;
+        tvVideo.autoplay = true;
+        tvVideo.play().catch(console.error);
+        tvVideo.crossOrigin = 'anonymous';
+
+        const tvVideoTexture = new THREE.VideoTexture(tvVideo);
+        tvVideoTexture.minFilter = THREE.LinearFilter;
+        tvVideoTexture.magFilter = THREE.LinearFilter;
+        tvVideoTexture.flipY = false;
+        tvVideoTexture.wrapS = THREE.MirroredRepeatWrapping;
+        tvVideoTexture.repeat.x = -1;
+
+        tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
+
+      } else {
+        progress.style.width = '100%';
+      }
+    }
+    );
+
+
+
     // Initialize videos and textures
     const videos = {
-      "Cadre1": { src: 'posterpolitique.mp4' },
-      "Cadre2": { src: 'Sport.mp4' },
-      "Cadre3": { src: 'example.mp4' },
-      "Cadre4": { src: 'example2.mp4' },
-      "Cadre5": { src: 'example3.mp4' },
+      "Cadre1": { src: '/PolitiqueTV.mp4' },
+      "Cadre2": { src: '/SportTV.mp4' },
+      "Cadre3": { src: '/MusiqueTV.mp4' },
+      "Cadre4": { src: '/EcologieTV.mp4' },
+      "Cadre5": { src: '/GeopolitiqueTV.mp4' }
     };
 
     Object.keys(videos).forEach((key) => {
@@ -60,34 +185,13 @@ const Model = ({ setTargetColor }) => {
       const tvScreen = scene.getObjectByName("SCREEN001");
 
       if (tvScreen) {
-        // add picture cat.jpg as texture
         const texture = new THREE.TextureLoader().load('/cat.jpg');
         tvScreen.material = new THREE.MeshBasicMaterial({ map: texture });
-        // flip textyre in y direction
         tvScreen.material.map.flipY = false;
       }
 
-      // console.log(tvScreen);
-      // if (tvScreen) {
-      //   const tvVideo = document.createElement('video');
-      //   tvVideo.src = '/Sport.mp4';
-      //   tvVideo.loop = true;
-      //   tvVideo.muted = true;
-      //   tvVideo.autoplay = true;
-      //   tvVideo.crossOrigin = 'anonymous';
-
-      //   const tvVideoTexture = new THREE.VideoTexture(tvVideo);
-      //   tvVideoTexture.minFilter = THREE.LinearFilter;
-      //   tvVideoTexture.magFilter = THREE.LinearFilter;
-      //   // tvVideoTexture.flipY = false;
-      //   tvVideoTexture.wrapS = THREE.RepeatWrapping;
-      //   tvVideoTexture.repeat.x = -1;
-
-      //   tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });         
-      // }
     });
 
-    // Raycaster to detect clicks on frames
     const handlePointerEnter = (event) => {
       mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -104,47 +208,18 @@ const Model = ({ setTargetColor }) => {
           document.body.style.cursor = 'auto';
         }
 
-        if (firstIntersect.name === "Cube012_1") {
-          videos["Cadre1"].texture.image.play();
-        } else {
-          videos["Cadre1"].texture.image.pause();
+        let cadres = ["Cube012_1", "Cube022_1", "Cube016_1", "Cube023_1", "Cube024_1"];
+        let cadresVideos = ["Cadre1", "Cadre2", "Cadre3", "Cadre4", "Cadre5"];
+
+        for (let i = 0; i < cadres.length; i++) {
+          if (firstIntersect.name === cadres[i]) {
+            videos[cadresVideos[i]].texture.image.play();
+          } else {
+            videos[cadresVideos[i]].texture.image.pause();
+          }
         }
-
-        if (firstIntersect.name === "Cube022_1") {
-          videos["Cadre2"].texture.image.play();
-
-        } else {
-          videos["Cadre2"].texture.image.pause();
-
-        }
-
-        if (firstIntersect.name === "Cube016_1") {
-          videos["Cadre3"].texture.image.play();
-
-        } else {
-          videos["Cadre3"].texture.image.pause();
-
-        }
-
-        if (firstIntersect.name === "Cube023_1") {
-          videos["Cadre4"].texture.image.play();
-
-        } else {
-          videos["Cadre4"].texture.image.pause();
-
-        }
-
-        if (firstIntersect.name === "Cube024_1") {
-          videos["Cadre5"].texture.image.play();
-
-        } else {
-          videos["Cadre5"].texture.image.pause();
-        }
-
-
       }
     };
-
 
     const handlePlayTVVideo = (event) => {
       mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -156,127 +231,34 @@ const Model = ({ setTargetColor }) => {
       if (intersects.length > 0) {
         const firstIntersect = intersects[0].object;
 
-        if (firstIntersect.name === "Cube012_1") {
-          const tvScreen = scene.getObjectByName("SCREEN001");
-          const tvVideo = document.createElement('video');
+        let cadres = ["Cube012_1", "Cube022_1", "Cube016_1", "Cube023_1", "Cube024_1"];
+        let tvVideos = ["/PolitiqueTV.mp4", "/SportTV.mp4", "/MusiqueTV.mp4", "/EcologieTV.mp4", "/GeopolitiqueTV.mp4"];
+        let colors = [0xffff00, 0xff0000, 0x00ff00, 0x0000ff, 0xff00ff];
 
-          tvVideo.src = '/posterpolitique.mp4';
-          tvVideo.loop = true;
-          tvVideo.muted = true;
-          tvVideo.autoplay = true;
-          tvVideo.play().catch(console.error);
-          tvVideo.crossOrigin = 'anonymous';
+        for (let i = 0; i < cadres.length; i++) {
+          if (firstIntersect.name === cadres[i]) {
+            const tvScreen = scene.getObjectByName("SCREEN001");
+            const tvVideo = document.createElement('video');
 
-          const tvVideoTexture = new THREE.VideoTexture(tvVideo);
-          tvVideoTexture.minFilter = THREE.LinearFilter;
-          tvVideoTexture.magFilter = THREE.LinearFilter;
-          tvVideoTexture.flipY = false;
-          tvVideoTexture.wrapS = THREE.MirroredRepeatWrapping;
-          tvVideoTexture.repeat.x = -1;
+            tvVideo.src = tvVideos[i];
+            tvVideo.loop = true;
+            tvVideo.muted = false;
+            tvVideo.autoplay = true;
+            tvVideo.play().catch(console.error);
+            tvVideo.crossOrigin = 'anonymous';
 
-          tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
+            const tvVideoTexture = new THREE.VideoTexture(tvVideo);
+            tvVideoTexture.minFilter = THREE.LinearFilter;
+            tvVideoTexture.magFilter = THREE.LinearFilter;
+            tvVideoTexture.flipY = false;
+            tvVideoTexture.wrapS = THREE.MirroredRepeatWrapping;
+            tvVideoTexture.repeat.x = -1;
 
-          // ambientlight color yellow
-          setTargetColor(new THREE.Color(0xffff00));
+            tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
+
+            setTargetColor(new THREE.Color(colors[i]));
+          }
         }
-
-        if (firstIntersect.name === "Cube022_1") {
-          const tvScreen = scene.getObjectByName("SCREEN001");
-          const tvVideo = document.createElement('video');
-
-          tvVideo.src = '/Sport.mp4';
-          tvVideo.loop = true;
-          tvVideo.muted = true;
-          tvVideo.autoplay = true;
-          tvVideo.play().catch(console.error);
-          tvVideo.crossOrigin = 'anonymous';
-
-          const tvVideoTexture = new THREE.VideoTexture(tvVideo);
-          tvVideoTexture.minFilter = THREE.LinearFilter;
-          tvVideoTexture.magFilter = THREE.LinearFilter;
-          tvVideoTexture.flipY = false;
-          tvVideoTexture.wrapS = THREE.MirroredRepeatWrapping;
-          tvVideoTexture.repeat.x = -1;
-
-          tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
-
-          // ambientlight color red
-          setTargetColor(new THREE.Color(0xff0000));
-        }
-
-        if (firstIntersect.name === "Cube016_1") {
-          const tvScreen = scene.getObjectByName("SCREEN001");
-          const tvVideo = document.createElement('video');
-
-          tvVideo.src = '/example.mp4';
-          tvVideo.loop = true;
-          tvVideo.muted = true;
-          tvVideo.autoplay = true;
-          tvVideo.play().catch(console.error);
-          tvVideo.crossOrigin = 'anonymous';
-
-          const tvVideoTexture = new THREE.VideoTexture(tvVideo);
-          tvVideoTexture.minFilter = THREE.LinearFilter;
-          tvVideoTexture.magFilter = THREE.LinearFilter;
-          tvVideoTexture.flipY = false;
-          tvVideoTexture.wrapS = THREE.MirroredRepeatWrapping;
-          tvVideoTexture.repeat.x = -1;
-
-          tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
-
-          // ambientlight color green
-          setTargetColor(new THREE.Color(0x00ff00));
-        }
-
-        if (firstIntersect.name === "Cube023_1") {
-          const tvScreen = scene.getObjectByName("SCREEN001");
-          const tvVideo = document.createElement('video');
-
-          tvVideo.src = '/example2.mp4';
-          tvVideo.loop = true;
-          tvVideo.muted = true;
-          tvVideo.autoplay = true;
-          tvVideo.play().catch(console.error);
-          tvVideo.crossOrigin = 'anonymous';
-
-          const tvVideoTexture = new THREE.VideoTexture(tvVideo);
-          tvVideoTexture.minFilter = THREE.LinearFilter;
-          tvVideoTexture.magFilter = THREE.LinearFilter;
-          tvVideoTexture.flipY = false;
-          tvVideoTexture.wrapS = THREE.MirroredRepeatWrapping;
-          tvVideoTexture.repeat.x = -1;
-
-          tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
-
-          // ambientlight color blue
-          setTargetColor(new THREE.Color(0x0000ff));
-        }
-
-        if (firstIntersect.name === "Cube024_1") {
-          const tvScreen = scene.getObjectByName("SCREEN001");
-          const tvVideo = document.createElement('video');
-
-          tvVideo.src = '/example3.mp4';
-          tvVideo.loop = true;
-          tvVideo.muted = true;
-          tvVideo.autoplay = true;
-          tvVideo.play().catch(console.error);
-          tvVideo.crossOrigin = 'anonymous';
-
-          const tvVideoTexture = new THREE.VideoTexture(tvVideo);
-          tvVideoTexture.minFilter = THREE.LinearFilter;
-          tvVideoTexture.magFilter = THREE.LinearFilter;
-          tvVideoTexture.flipY = false;
-          tvVideoTexture.wrapS = THREE.MirroredRepeatWrapping;
-          tvVideoTexture.repeat.x = -1;
-
-          tvScreen.material = new THREE.MeshBasicMaterial({ map: tvVideoTexture });
-
-          // ambientlight color purple
-          setTargetColor(new THREE.Color(0xff00ff));
-        }
-
-
       }
     }
 
@@ -319,14 +301,13 @@ const CameraController = () => {
 };
 
 const Scene = () => {
-  const [ambientLightColor, setAmbientLightColor] = useState(new THREE.Color(0xFFFFFF)); // Initial color white
-  const [targetColor, setTargetColor] = useState(new THREE.Color('white')); // Nouvelle couleur cible
+  const [ambientLightColor, setAmbientLightColor] = useState(new THREE.Color(0xFFFFFF));
+  const [targetColor, setTargetColor] = useState(new THREE.Color('white'));
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Interpolation de la couleur actuelle vers la couleur cible
-      ambientLightColor.lerp(targetColor, 0.05); // 0.05 est la vitesse de la transition
-      setAmbientLightColor(ambientLightColor.clone()); // Mettre à jour l'état pour forcer le rendu
+      ambientLightColor.lerp(targetColor, 0.05);
+      setAmbientLightColor(ambientLightColor.clone());
 
     }, 16); // Approx. 60 FPS (16 ms)
 
