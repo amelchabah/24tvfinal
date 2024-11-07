@@ -7,18 +7,12 @@ import * as THREE from 'three';
 
 const Model = () => {
   // const gltf = useLoader(GLTFLoader, '/untitled1.glb', (loader) => {
-  // https://github.com/amelchabah/glbfile/blob/3e7a1b4dc4fb3f1f72d649cbade7ad3206d2f21a/untitled1.glb
-
   const modelUrl = 'https://raw.githubusercontent.com/amelchabah/glbfile/3e7a1b4dc4fb3f1f72d649cbade7ad3206d2f21a/untitled1.glb';  // Correct raw URL
   const gltf = useLoader(GLTFLoader, modelUrl, (loader) => {
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath('/draco/');
     loader.setDRACOLoader(dracoLoader);
   });
-
-  // const gltf = useLoader(GLTFLoader, modelUrl);
-
-
 
   const scene = gltf.scenes[0];
   const raycaster = useMemo(() => new THREE.Raycaster(), []);
@@ -63,7 +57,21 @@ const Model = () => {
         node.visible = false;
       }
 
-      // const tvScreen = scene.getObjectByName("SCREEN001");
+
+
+
+
+
+      const tvScreen = scene.getObjectByName("SCREEN001");
+
+      if(tvScreen) {
+        // add picture cat.jpg as texture
+        const texture = new THREE.TextureLoader().load('/cat.jpg');
+        tvScreen.material = new THREE.MeshBasicMaterial({ map: texture });
+        // flip textyre in y direction
+        tvScreen.material.map.flipY = false;
+      }
+
       // console.log(tvScreen);
       // if (tvScreen) {
       //   const tvVideo = document.createElement('video');
