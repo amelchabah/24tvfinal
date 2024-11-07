@@ -6,9 +6,6 @@ import './globals.scss';
 const App = () => {
   return (
     <div className='frame'>
-      {/* <div className='progress-bar'>
-        <div className='progress' />
-      </div> */}
       <Model />
     </div>
   );

@@ -57,11 +57,6 @@ const Model = () => {
         node.visible = false;
       }
 
-
-
-
-
-
       const tvScreen = scene.getObjectByName("SCREEN001");
 
       if(tvScreen) {
@@ -105,32 +100,51 @@ const Model = () => {
 
         if (firstIntersect.name === "Cube012_1") {
           videos["Cadre1"].texture.image.play();
+          // cursor css pointer
+          document.body.style.cursor = 'pointer';
         } else {
           videos["Cadre1"].texture.image.pause();
+          document.body.style.cursor = 'default';
+
         }
 
         if (firstIntersect.name === "Cube022_1") {
           videos["Cadre2"].texture.image.play();
+          document.body.style.cursor = 'pointer';
+
         } else {
           videos["Cadre2"].texture.image.pause();
+          document.body.style.cursor = 'default';
+
         }
 
         if (firstIntersect.name === "Cube016_1") {
           videos["Cadre3"].texture.image.play();
+          document.body.style.cursor = 'pointer';
+
         } else {
           videos["Cadre3"].texture.image.pause();
+          document.body.style.cursor = 'default';
+
         }
 
         if (firstIntersect.name === "Cube023_1") {
           videos["Cadre4"].texture.image.play();
+          document.body.style.cursor = 'pointer';
+
         } else {
           videos["Cadre4"].texture.image.pause();
+          document.body.style.cursor = 'default';
+
         }
 
         if (firstIntersect.name === "Cube024_1") {
           videos["Cadre5"].texture.image.play();
+          document.body.style.cursor = 'pointer';
+
         } else {
           videos["Cadre5"].texture.image.pause();
+          document.body.style.cursor = 'default';
         }
 
 
