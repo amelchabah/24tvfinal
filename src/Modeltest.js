@@ -220,6 +220,8 @@ const Model = ({ setTargetColor }) => {
         }
       }
     };
+    const tvScreen = scene.getObjectByName("SCREEN001");
+    const tvVideo = document.createElement('video');
 
     const handlePlayTVVideo = (event) => {
       mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -237,8 +239,6 @@ const Model = ({ setTargetColor }) => {
 
         for (let i = 0; i < cadres.length; i++) {
           if (firstIntersect.name === cadres[i]) {
-            const tvScreen = scene.getObjectByName("SCREEN001");
-            const tvVideo = document.createElement('video');
 
             tvVideo.src = tvVideos[i];
             tvVideo.loop = true;
