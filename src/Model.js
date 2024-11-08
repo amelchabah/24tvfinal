@@ -215,6 +215,7 @@ const Model = ({ setTargetColor, setIsPlaying, isPlaying, isButtonVisible, setIs
             texture.source.data.currentTime = 0;
             texture.source.data.play()
 
+            tvScreen.material.map.source.data.pause()
             tvScreen.material = new THREE.MeshBasicMaterial({ map: texture });
             setTargetColor(new THREE.Color(colors[i]));
           }
