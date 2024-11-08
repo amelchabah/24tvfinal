@@ -195,25 +195,26 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-
   position: fixed;
 
   .opacity {
-    opacity: 0.5 !important;
+    opacity: 0.7 !important;
     cursor: default !important;
 
     &:hover {
-      opacity: 0.5 !important;
+      opacity: 0.7 !important;
     }
   }
 
   .loadercontainer {
 
-    opacity: 0.8;
+    opacity: 0.9;
 
     &:hover {
       opacity: 1;
       cursor: pointer;
+
+      background-color: rgba(0, 0, 0, 0.8);
     }
 
     h1 {
@@ -227,13 +228,20 @@ canvas {
       color: white;
       font-size: 1.2rem;
       padding: 0;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+     
     }
+
     position: fixed;
     bottom: 14vh;
 
     right: 2rem;
     padding: 20px;
-    background-color: rgba(128, 128, 128, 0.269);
+    background-color: rgba(0, 0, 0, 0.736);
   }
 }
 

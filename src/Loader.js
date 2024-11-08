@@ -31,7 +31,7 @@ export default function Loader() {
                 {/* Background video */}
                 <video
                     className="background-video"
-                    src="/example.mp4"
+                    src="/ad.mp4"
                     autoPlay
                     loop
                     muted
