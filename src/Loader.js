@@ -17,7 +17,14 @@ export default function Loader() {
 
     // Function to hide the loader when the button is clicked
     const handleHideLoader = () => {
-        setIsVisible(false);
+        // animation fade out transition, from opacity 1 to 0, and then set the visibility to false
+        document.querySelector('.loader').style.opacity = 0;
+        document.querySelector('.loader').style.transition = 'opacity 1s';
+        setTimeout(() => {
+            setIsVisible(false);
+        }, 2000);
+
+        // setIsVisible(false);
     };
 
     return (
@@ -26,7 +33,7 @@ export default function Loader() {
                 {
                     countdown > 0 ? (
                         <>
-                            <div className="loadercontainer">
+                            <div className="loadercontainer opacity">
                                 <h1>Skip ad in {countdown}s</h1>
                             </div>
                         </>

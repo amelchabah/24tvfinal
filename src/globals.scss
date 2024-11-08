@@ -187,7 +187,25 @@ canvas {
   align-items: center;
 
   position: fixed;
+
+  .opacity {
+    opacity: 0.5 !important;
+    cursor: default !important;
+
+    &:hover {
+      opacity: 0.5 !important;
+    }
+  }
+
   .loadercontainer {
+
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
     h1 {
       margin: 0;
     }

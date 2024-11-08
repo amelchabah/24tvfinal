@@ -9,6 +9,7 @@ const App = () => {
     <>
       <Loader />
       <div className='frame'>
+
         <Model />
       </div>
     </>
