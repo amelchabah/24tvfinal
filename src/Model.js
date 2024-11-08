@@ -381,7 +381,7 @@ const Scene = () => {
       </div>
 
       <Canvas camera={{ position: [16, -1, 0], fov: 30 }}>
-        <ambientLight intensity={0.7} color={ambientLightColor} />
+        <ambientLight intensity={1} color={ambientLightColor} />
         <directionalLight position={[50, 90, 10]} intensity={1.5} />
         <Suspense fallback={null}>
           <Model setTargetColor={setTargetColor} setIsPlaying={setIsPlaying} isPlaying={isPlaying} isButtonVisible={isButtonVisible} setIsButtonVisible={setIsButtonVisible} />

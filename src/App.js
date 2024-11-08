@@ -10,6 +10,7 @@ const App = () => {
       <Loader />
       <div className='frame'>
 
+        <img src='/giphy.webp' alt='giphy' className='giphy' />
         <Model />
       </div>
     </>
