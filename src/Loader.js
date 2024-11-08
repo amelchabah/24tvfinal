@@ -17,26 +17,33 @@ export default function Loader() {
 
     // Function to hide the loader when the button is clicked
     const handleHideLoader = () => {
-        // animation fade out transition, from opacity 1 to 0, and then set the visibility to false
+        // Animation fade-out transition, from opacity 1 to 0, and then set the visibility to false
         document.querySelector('.loader').style.opacity = 0;
         document.querySelector('.loader').style.transition = 'opacity 1s';
         setTimeout(() => {
             setIsVisible(false);
         }, 2000);
-
-        // setIsVisible(false);
     };
 
     return (
         isVisible && (
             <div className="loader">
+                {/* Background video */}
+                <video
+                    className="background-video"
+                    src="/example.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline // Ensures autoplay works on mobile browsers
+                />
+
+                {/* Countdown and Skip Button */}
                 {
                     countdown > 0 ? (
-                        <>
-                            <div className="loadercontainer opacity">
-                                <h1>Skip ad in {countdown}s</h1>
-                            </div>
-                        </>
+                        <div className="loadercontainer opacity">
+                            <h1>Skip ad in {countdown}s</h1>
+                        </div>
                     ) : (
                         <div className="loadercontainer">
                             <button onClick={handleHideLoader}><h1>Skip ad</h1></button>
