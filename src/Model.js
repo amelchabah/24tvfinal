@@ -348,7 +348,7 @@ const Scene = () => {
       <div className='controls'>
         {
           isButtonVisible && (
-            <button onClick={onClick}>
+            <button onClick={onClick} title='Play/Pause video'>
               {
                 isPlaying ? (
                   <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
